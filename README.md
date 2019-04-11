@@ -24,7 +24,7 @@
 
 1. 在酷Q安装目录下新建download文件夹，将如下文件放入其中
     * 上述所有打包生成的exe
-    * javasc.js文件
+    * javaScript.js文件
     * chromedriver.exe
     * Application/ 文件夹
 
