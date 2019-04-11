@@ -17,7 +17,7 @@
 
 1. QR.py 将链接转换为二维码
 
-1. movie.py 电影下载
+1. movie.py 电影链接爬取
 
 >### 使用方法
 1. 使用对应版本的pyinstaller将上述py文件打包生成exe
