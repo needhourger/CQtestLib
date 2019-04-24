@@ -15,6 +15,8 @@ suffix=""
 url_base="http://moresound.tk/music/"
 url_search="http://moresound.tk/music/api.php?search=qq"
 url_song="http://moresound.tk/music/api.php?get_song=qq"
+headers={"User-Agent":"User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"}
+timeout=3
 
 def new_cookies():
     global cookies,url_base
@@ -78,7 +80,8 @@ def main():
     param={"w":song_name,"p":1,"n":1}
     cookie=generate()
     print(cookie)
-    r=requests.post(url_search,data=param,cookies=cookie)
+    
+    r=requests.post(url_search,headers=headers,data=param,cookies=cookie,timeout=timeout)
     ret=json.loads(r.text)
     print(ret)
     if "song_list" in ret:
@@ -88,7 +91,7 @@ def main():
         return
     
     param={"mid":mid}
-    r=requests.post(url_song,param,cookies=cookie)
+    r=requests.post(url_song,param,headers=headers,cookies=cookie,timeout=timeout)
     ret=json.loads(r.text)
     filename="default"
     if "url" in ret:
@@ -111,7 +114,7 @@ def main():
         print("No resource")
         return
     
-    r=requests.get(url_base+url,cookies=cookie)
+    r=requests.get(url_base+url,headers=headers,cookies=cookie,timeout=timeout)
     ret=json.loads(r.text)
     if "url" in ret:
         url=ret['url']
