@@ -13,8 +13,8 @@ cookies=[]
 suffix=""
 
 url_base="http://moresound.tk/music/"
-url_search="http://moresound.tk/music/api.php?search=qq"
-url_song="http://moresound.tk/music/api.php?get_song=qq"
+url_search="http://moresound.tk/music/api.php?search=kg"
+url_song="http://moresound.tk/music/api.php?get_song=kg"
 headers={"User-Agent":"User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"}
 timeout=3
 
@@ -31,6 +31,7 @@ def new_cookies():
     chrome.get(url_base)
     chrome.find_element_by_id("tipsDayPage").click()
     cookies=chrome.get_cookies()
+    
     chrome.quit()
 
     with open(WORK_PATH+"/cookies","w+") as f:
@@ -46,7 +47,7 @@ def load_cookies():
         cookies=json.load(f)
         now=int(time.time())
         for x in cookies:
-            if x['expiry']<=now:
+            if 'expiry' in x and x.get('expiry')<=now:
                 new_cookies()
                 f.close()
                 return

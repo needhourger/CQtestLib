@@ -219,10 +219,11 @@ def groups_Manager():
         elif choice=="del":
             choice=input("群号：")
             try:
-                c.execute("delete from goups where groupID={};".format(choice))
+                c.execute("delete from groups where groupID={};".format(choice))
                 conn.commit()
             except:
                 print("删除失败，请检查群号")
+                os.system("pause")
         elif choice=="exit":
             break
     conn.close()
