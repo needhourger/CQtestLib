@@ -21,12 +21,15 @@
 
 1. register.py 校园信息门户爬取认证
 
-1. manager.py 简易数据库链接管理工具
+1. manager.py 简易数据库链接管理工具、
+
+1. school_timetable.py 课程表查询功能（开发ing）
+
+>2019.8.14
+1. school_timetable.py 课程表查询功能（开发ing）
 
 >2019.5.14更新
 1. 修复部分程序bug
-
-1. new_music.py正在开发的独立音乐下载功能
 
 >2019.4.24更新
 
