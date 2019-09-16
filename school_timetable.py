@@ -51,9 +51,10 @@ def GetUserPass(qq):
 # password="07025210"
 # GetTable(login(username,password),username,"./")
 if __name__ == "__main__":
-    qq=sys.argv[1]
-    savePath=sys.argv[2]
-    username,password=GetUserPass(qq)
+    username=sys.argv[1]
+    password=sys.argv[2]
+    savePath=sys.argv[3]
+    # username,password=GetUserPass(qq)
     # username="2017120097"
     # password="07025210"
     # savePath="./"
