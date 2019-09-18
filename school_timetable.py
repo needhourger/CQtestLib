@@ -12,6 +12,10 @@ ROOT,FILENAME=os.path.split(os.path.abspath(__file__))
 
 url=r"https://cas.hhit.edu.cn/lyuapServer/login?service=http://58.192.29.7/login_cas.aspx"
 
+def checkPath(path):
+    if not os.path.exists(path):
+        os.mkdir(path)
+
 
 def GetTable(username,password,savePath):
     global url
@@ -35,6 +39,7 @@ def GetTable(username,password,savePath):
     width=body.size['width']
     height=body.size['height']
     chrome.set_window_size(width,height)
+    checkPath(savePath)
     chrome.save_screenshot(savePath+"/school_timetable.jpg")
     # time.sleep(5)
     chrome.quit()
