@@ -65,25 +65,25 @@ def login(username,password):
     return None
 
 def register(username,password,qq):
-    session,soup=login(username,password)
-    if session!=None:
-        logging.info("login success")
-    else:
-        logging.error("login failed")
-        return
-    class_userinfo=soup.find('div',attrs={"class":"_hhitwin8userinfo_WAR_hhitwin8userinfoportlet_imgBox"})
-    tds=class_userinfo.findChildren('td')
-    if tds==None:
-        logging.error("missing td")
-        return
+    # session,soup=login(username,password)
+    # if session!=None:
+    #     logging.info("login success")
+    # else:
+    #     logging.error("login failed")
+    #     return
+    # class_userinfo=soup.find('div',attrs={"class":"_hhitwin8userinfo_WAR_hhitwin8userinfoportlet_imgBox"})
+    # tds=class_userinfo.findChildren('td')
+    # if tds==None:
+    #     logging.error("missing td")
+    #     return
 
     info={}
-    for td in tds:
-        text=td.get_text().split('：')
-        try:
-            info[text[0]]=text[1]
-        except:
-            info[text[0]]=""
+    # for td in tds:
+    #     text=td.get_text().split('：')
+    #     try:
+    #         info[text[0]]=text[1]
+    #     except:
+    #         info[text[0]]=""
         
     db=sqlite3.connect("./CQtest.db")
     if db==None:
@@ -101,7 +101,7 @@ def register(username,password,qq):
     # print(row)
     if row==None or row==(0,0):
         cursor.execute(
-        "insert or replace into users (QQ_ID,Stu_ID,Password,Name,Gender,Department,Notice_uptime,isvip,isbanned,isregistered) values({},{},'{}','{}','{}','{}',NULL,0,0,1);".format(qq,username,password,info.get('姓名'),info.get('性别'),info.get('部门'))
+        "insert or replace into users (QQ_ID,Stu_ID,Password,Name,Gender,Department,Notice_uptime,isvip,isbanned,isregistered) values({},{},'{}','{}','{}','{}',NULL,0,0,1);".format(qq,username,password,info.get('姓名',""),info.get('性别',""),info.get('部门',""))
         )
         logging.info("update user")
     else:
