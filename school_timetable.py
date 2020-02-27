@@ -25,7 +25,7 @@ def GetTable(username,password,savePath):
     options.add_argument("--disable_gpu")
     options.add_argument("--allow_running-inecure-content")
     options.add_argument("--disable-extensions")
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
 
     chrome=webdriver.Chrome(chrome_options=options,executable_path=ROOT+"/chromedriver.exe")
     chrome.get(url)
@@ -33,7 +33,9 @@ def GetTable(username,password,savePath):
     chrome.find_element_by_id("password").send_keys(password)
     chrome.find_element_by_class_name("btn-submit").click()
     # time.sleep(5)
-    URL=r"http://58.192.29.7/xskbcx.aspx?xh="+username+r"&xm=%BD%F0%C8%CA%BD%DC&gnmkdm=N121603"
+    # URL=r"http://58.192.29.7/xskbcx.aspx?xh="+username+r"&xm=%BD%F0%C8%CA%BD%DC&gnmkdm=N121603"
+    URL=chrome.find_element_by_xpath("""//*[@id="headDiv"]/ul/li[5]/ul/li[1]/a""").get_attribute("href")
+    print(URL)
     chrome.get(URL)
     body=chrome.find_element_by_xpath("/html/body")
     width=body.size['width']
